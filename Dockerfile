@@ -1,6 +1,5 @@
 FROM mysql:latest
-ENV MYSQL_ROOT_PASSWORD password 
-COPY /root/mysqlimage/db-samples/mysql /var/lib/mysql
-ADD jsp_backup.sql /docker-entrypoint-initdb.d
-
+COPY northwind.sql /docker-entrypoint-initdb.d/
+RUN ["/usr/local/bin/docker-entrypoint.sh"]
+ENV MYSQL_ROOT_PASSWORD=passwd
 EXPOSE 3306
